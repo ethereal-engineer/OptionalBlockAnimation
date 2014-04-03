@@ -21,8 +21,8 @@ Pod::Spec.new do |s|
   s.source           = { :git => "http://EXAMPLE/NAME.git", :tag => s.version.to_s }
   s.social_media_url = 'https://twitter.com/EXAMPLE'
 
-  # s.platform     = :ios, '5.0'
-  # s.ios.deployment_target = '5.0'
+  s.platform     = :ios, '7.1'
+  s.ios.deployment_target = '7.0'
   # s.osx.deployment_target = '10.7'
   s.requires_arc = true
 
@@ -33,5 +33,6 @@ Pod::Spec.new do |s|
   s.osx.exclude_files = 'Classes/ios'
   # s.public_header_files = 'Classes/**/*.h'
   # s.frameworks = 'SomeFramework', 'AnotherFramework'
+  s.framework = 'UIKit'
   # s.dependency 'JSONKit', '~> 1.4'
 end

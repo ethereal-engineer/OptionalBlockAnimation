@@ -7,24 +7,23 @@
 Pod::Spec.new do |s|
   s.name             = "OptionalBlockAnimation"
   s.version          = "0.1.0"
-  s.summary          = "A short description of OptionalBlockAnimation."
+  s.summary          = "A UIView category that adds a boolean option to all animate... class methods"
   s.description      = <<-DESC
                        An optional longer description of OptionalBlockAnimation
 
                        * Markdown format.
                        * Don't worry about the indent, we strip it!
                        DESC
-  s.homepage         = "http://EXAMPLE/NAME"
-  s.screenshots      = "www.example.com/screenshots_1", "www.example.com/screenshots_2"
+  s.homepage         = "https://github.com/iosengineer/OptionalBlockAnimation/"
+  #s.screenshots      = "www.example.com/screenshots_1", "www.example.com/screenshots_2"
   s.license          = 'MIT'
   s.author           = { "Adam Iredale" => "adam@bionicmonocle.com" }
-  s.source           = { :git => "http://EXAMPLE/NAME.git", :tag => s.version.to_s }
-  s.social_media_url = 'https://twitter.com/EXAMPLE'
+  s.source           = { :git => "https://github.com/iosengineer/OptionalBlockAnimation.git", :tag => s.version.to_s }
+  s.social_media_url = 'https://twitter.com/iosengineer'
 
   s.platform     = :ios, '7.1'
   s.ios.deployment_target = '7.0'
-  # s.osx.deployment_target = '10.7'
-  s.requires_arc = true
+  s.requires_arc = false
 
   s.source_files = 'Classes'
   s.resources = 'Assets/*.png'
@@ -34,5 +33,4 @@ Pod::Spec.new do |s|
   # s.public_header_files = 'Classes/**/*.h'
   # s.frameworks = 'SomeFramework', 'AnotherFramework'
   s.framework = 'UIKit'
-  # s.dependency 'JSONKit', '~> 1.4'
 end

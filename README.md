@@ -75,12 +75,36 @@ Well, maybe it's more of a workaround than a solution, but it sure makes the pro
 }
 ```
 
-All class methods from `UIView (UIViewAnimationWithBlocks)` have been extended to include `animate` as a boolean argument.
+All but one class method from `UIView (UIViewAnimationWithBlocks)` have been extended to include `animate` as a boolean argument.
 
 - If `animate` is `YES` then you can expect the same behaviour as calling the ordinary method.
 - If `animate` is `NO`, then the animations and completion blocks are called just like the second example above. 
 
 There are some minor variations for some calls, so feel free to peruse the code. As usual, pull requests are welcome.
+
+## Addendum: Why Not Zero Duration?
+
+Several helpful friends on Twitter asked why not use this approach:
+
+```
+- (void)viewWillAppear:(BOOL)animated
+{
+	[UIView animateWithDuration:animated ? 0.0 : 0.25 animations:^
+	{
+		// Some manipulation
+	} 
+	completion:^void(BOOL didFinish)
+	{
+		// Some completion action
+	}];
+}
+```
+
+At first, this seemed like a much cleaner answer to the problem, but when I tested it, the fact that the animation block is not executed immediately when requesting _no animation_ can cause flicker or incorrect UI to display. 
+
+I use this class a lot in `viewWillAppear:` and when not animating, I want the view to be configured and ready for display __before__ it appears on screen. If the zero duration approach is used, the animations block will be run too late.
+
+Thanks to [@shaps](https://twitter.com/shaps), [@merowing_](https://twitter.com/merowing_), [@myell0w](https://twitter.com/myell0w), [@iMartinKiss](https://twitter.com/iMartinKiss) and [@orta](https://twitter.com/orta) for their input!
 
 ## Requirements
 
